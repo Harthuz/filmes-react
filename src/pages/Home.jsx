@@ -2,7 +2,7 @@ import '/src/css/Home.css'
 import MovieCard from '../components/MovieCard'
 import Spinner from '../components/Spinner'
 import { useState, useEffect } from 'react';
-import { getPopularMovies } from '/src/services/api.js'
+import { getPopularMovies, getMovies } from '/src/services/api.js'
 
 
 function Home() {
@@ -15,7 +15,7 @@ function Home() {
         const loadPopularMovies = async () => {
             try {
                 const movies = await getPopularMovies()
-                console.log(movies)
+                // console.log(movies)
                 setMovies(movies)
             } catch (error) {
                 console.error(error)
@@ -28,10 +28,24 @@ function Home() {
         loadPopularMovies()
     }, [])
 
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault()
-        alert(searchQuery)
-        setsearchQuery("")
+
+        if (!searchQuery.trim()) return
+        if (loading) return
+
+        setLoading(true)
+
+        try {
+            const searchResults = await getMovies(searchQuery)
+            setMovies(searchResults)
+            setError(null)
+        } catch (error) {
+            setError("Falha ao carregar os filmes")
+        }
+        finally {
+            setLoading(false)
+        }
     };
 
     return (
@@ -46,6 +60,8 @@ function Home() {
                 />
                 <button className="search-btn" type="submit">Procurar</button>
             </form>
+
+            {error && <p className="error-message">{error}</p>}
 
             {loading ? (
                 <Spinner />

@@ -1,8 +1,14 @@
 import '/src/css/MovieCard.css'
+import { useMovieContext } from '../contexs/MovieContext'
 
 function MovieCard({ movie }) {
-    function onFavoriteClick() {
-        alert("Favoritado")
+    const { isFavorite, addTofavorites, removeFromFavorites } = useMovieContext();
+    const favorite = isFavorite(movie.id)
+
+    function onFavoriteClick(e) {
+        e?.preventDefault?.(); // só chama se existir
+        if (favorite) removeFromFavorites(movie.id)
+        else addTofavorites(movie)
     }
 
     function formatDate(dateString) {
@@ -18,7 +24,7 @@ function MovieCard({ movie }) {
                 <div className="movie-poster">
                     <img src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
                     <div className="movie-overlay">
-                        <button className="favorite-btn" onClick={onFavoriteClick}>
+                        <button className={`favorite-btn ${favorite ? 'active' : ''}`} onClick={onFavoriteClick}>
                             ❤
                         </button>
                     </div>
