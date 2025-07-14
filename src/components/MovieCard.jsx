@@ -5,11 +5,18 @@ function MovieCard({ movie }) {
         alert("Favoritado")
     }
 
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        if (isNaN(date)) return dateString;
+        const options = { year: 'numeric', month: 'long', day: '2-digit' };
+        return date.toLocaleDateString('pt-BR', options);
+    }
+
     return (
         <>
-            <div className="movie-card">
+            <div className="movie-card" id={movie.key}>
                 <div className="movie-poster">
-                    <img src={movie.src} alt={movie.tile} />
+                    <img src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
                     <div className="movie-overlay">
                         <button className="favorite-btn" onClick={onFavoriteClick}>
                             ❤
@@ -18,7 +25,7 @@ function MovieCard({ movie }) {
                 </div>
                 <div className="movie-info">
                     <h3>{movie.title}</h3>
-                    <p>{movie.release_date}</p>
+                    <p>{formatDate(movie.release_date)}</p>
                 </div>
             </div>
         </>
