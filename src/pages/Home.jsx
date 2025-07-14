@@ -28,6 +28,25 @@ function Home() {
         loadPopularMovies()
     }, [])
 
+    useEffect(() => {
+        if (!searchQuery.trim()) return;
+
+        const fetchMovies = async () => {
+            setLoading(true);
+            try {
+                const searchResults = await getMovies(searchQuery);
+                setMovies(searchResults);
+                setError(null);
+            } catch (error) {
+                setError("Falha ao carregar os filmes");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchMovies();
+    }, [searchQuery]);
+
     const handleSearch = async (e) => {
         e.preventDefault()
 
