@@ -1,15 +1,15 @@
 function MovieCard({ movie }) {
+    function onFavoriteClick() {
+        alert("Favoritado")
+    }
+
     return (
         <>
             <div className="movie-card">
                 <div className="movie-poster">
                     <img src={movie.src} alt={movie.tile} />
                     <div className="movie-overlay">
-                        <button className="favorite-btn" onClick={
-                            function onFavoriteClick() {
-                                alert("Favoritado")
-                            }
-                        }>
+                        <button className="favorite-btn" onClick={onFavoriteClick}>
                             ❤
                         </button>
                     </div>
