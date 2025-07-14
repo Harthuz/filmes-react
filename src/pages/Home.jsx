@@ -1,3 +1,4 @@
+import '/src/css/Home.css'
 import MovieCard from '../components/MovieCard'
 import { useState } from 'react';
 

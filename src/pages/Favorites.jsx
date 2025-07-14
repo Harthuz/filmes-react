@@ -1,3 +1,6 @@
+import '/src/css/Favorites.css'
+
+
 function Favorites() {
   return (
     <div className="favorites">
