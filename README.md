@@ -1,12 +1,29 @@
-# React + Vite
+# 📽️ FilmeApp React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web desenvolvida com **React** e **Vite** que permite aos usuários pesquisar filmes, visualizar detalhes e adicioná-los aos favoritos. Os dados são consumidos da API do [The Movie Database (TMDB)](https://www.themoviedb.org/).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## Expanding the ESLint configuration
+- 🔍 **Pesquisa de Filmes**  
+  Pesquise filmes diretamente utilizando a API do TMDB.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🎬 **Exibição de Filmes Populares**  
+  Visualize os filmes mais populares em destaque na página inicial.
+
+- ⭐ **Favoritar Filmes**  
+  Adicione filmes aos seus favoritos com apenas um clique.
+
+- 📂 **Página de Favoritos**  
+  Navegue até uma página dedicada aos filmes favoritados.
+
+---
+
+## 🧱 Stack Tecnológica
+
+- **React**
+- **Vite**
+- **JavaScript**
+- **CSS**
+- **TMDB API**
